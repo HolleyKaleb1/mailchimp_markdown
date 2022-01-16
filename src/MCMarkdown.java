@@ -1,12 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class MCMarkdown {
     public static void main(String[] args){
 
+        processMarkdownContent();
+    }
+
+    public static void processMarkdownContent(){
+
+        BufferedReader reader;
+
+        try{
+            reader = new BufferedReader(new FileReader("/Users/groovykroc/Documents/Development/MCMarkdown/src/Text.txt"));
+            String line = reader.readLine();
+
+            while (line != null){
+                System.out.println(line);
+
+                line = reader.readLine();
+            }
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
 
     }
 }
 //TODOS
 // [x] Create txt file
-// [] Read from txt file per line
-// [] Determine the type of html component
+// [x] Read from txt file per line
+// [] Determine the type of html component / tag
 // [] Headers, paragraphs ,attribute, Ignored,
 // [] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
