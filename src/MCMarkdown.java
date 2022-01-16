@@ -1,7 +1,12 @@
 public class MCMarkdown {
     public static void main(String[] args){
 
-        System.out.println("Hello World");
 
     }
 }
+//TODOS
+// [x] Create txt file
+// [] Read from txt file per line
+// [] Determine the type of html component
+// [] Headers, paragraphs ,attribute, Ignored,
+// [] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
