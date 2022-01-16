@@ -1,6 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+
+enum Type {
+    PARAGRAPH, HEADER , ATTRIBUTE, IGNORED
+}
+
 public class MCMarkdown {
     public static void main(String[] args){
 
@@ -30,6 +35,7 @@ public class MCMarkdown {
 //TODOS
 // [x] Create txt file
 // [x] Read from txt file per line
+// [x] create tag class to determine what is needed for html
 // [] Determine the type of html component / tag
 // [] Headers, paragraphs ,attribute, Ignored,
 // [] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
