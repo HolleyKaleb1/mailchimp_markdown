@@ -1,9 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 
 enum Type {
-    PARAGRAPH, HEADER , ATTRIBUTE, IGNORED
+    PARAGRAPH, HEADER , ATTRIBUTE, IGNORED,ORIGINAL
 }
 
 public class MCMarkdown {
@@ -17,13 +18,43 @@ public class MCMarkdown {
         BufferedReader reader;
 
         try{
+            ArrayList<String> markdownData = new ArrayList<>();
             reader = new BufferedReader(new FileReader("/Users/groovykroc/Documents/Development/MCMarkdown/src/Text.txt"));
+            HTMLConverter htmlConverter = new HTMLConverter();
+            ArrayList<String> convertedHTML = new ArrayList<String>();
+
             String line = reader.readLine();
-
+            markdownData.add(line);
             while (line != null){
-                System.out.println(line);
-
                 line = reader.readLine();
+                markdownData.add(line);
+            }
+            System.out.println(markdownData.size());
+
+            for (int i = 0; i < markdownData.size() - 1;i++) {
+                String currentLine = markdownData.get(i);
+                String type = htmlConverter.checkForTags(currentLine);
+                switch (type){
+                    case "HEADER":
+                        convertedHTML.add(htmlConverter.processHeader(currentLine));
+                        break;
+                    case "PARAGRAPH":
+                        convertedHTML.add(htmlConverter.processParagraph(currentLine));
+                        break;
+                    case "ATTRIBUTE":
+                        convertedHTML.add(htmlConverter.processLink( currentLine));
+                        break;
+//                    case "IGNORED":
+//                        convertedHTML.add(currentLine);
+                    case "ORIGINAL":
+                        convertedHTML.add(currentLine);
+                        break;
+                    default:
+                }
+            }
+
+            for (int i = 0; i < convertedHTML.size();i++){
+                System.out.println(convertedHTML.get(i));
             }
         }
         catch(Exception ex){
@@ -31,11 +62,13 @@ public class MCMarkdown {
         }
 
     }
+
 }
 //TODOS
 // [x] Create txt file
 // [x] Read from txt file per line
 // [x] create tag class to determine what is needed for html
-// [] Determine the type of html component / tag
-// [] Headers, paragraphs ,attribute, Ignored,
+// [x] Determine the type of html component / tags
+// [x] Handle Identifying headers
+// [x] Headers, paragraphs ,attribute, Ignored,
 // [] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
