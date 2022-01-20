@@ -14,6 +14,7 @@ public class MCMarkdown {
 
         try{
             ArrayList<String> markdownData = new ArrayList<>();
+            // The file name should be changed to wherever the file is on your local computer.
             reader = new BufferedReader(new FileReader("/Users/groovykroc/Documents/Development/MCMarkdown/src/Text.txt"));
             HTMLConverter htmlConverter = new HTMLConverter();
             ArrayList<String> convertedHTML = new ArrayList<String>();
