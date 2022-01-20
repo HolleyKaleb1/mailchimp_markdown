@@ -5,7 +5,7 @@ public class Link {
 
     public Link (String linkCridentials){
         int linkStart = linkCridentials.indexOf("(") + 1;
-        int linkEnd = linkCridentials.indexOf(")") -  1;
+        int linkEnd = linkCridentials.indexOf(")");
         int linkTextStart =  linkCridentials.indexOf("[") + 1;
         int linkTextEnd = linkCridentials.indexOf("]");
         this.url = linkCridentials.substring(linkStart,linkEnd);
