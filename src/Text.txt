@@ -5,3 +5,5 @@
 Unformatted text
 [Link text](https://www.example.com)
 Blank line
+This is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment.
+## This is a header [with a link](http://yahoo.com)

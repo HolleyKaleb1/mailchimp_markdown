@@ -2,11 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-
-enum Type {
-    PARAGRAPH, HEADER , ATTRIBUTE, IGNORED,ORIGINAL
-}
-
 public class MCMarkdown {
     public static void main(String[] args){
 
@@ -29,7 +24,6 @@ public class MCMarkdown {
                 line = reader.readLine();
                 markdownData.add(line);
             }
-            System.out.println(markdownData.size());
 
             for (int i = 0; i < markdownData.size() - 1;i++) {
                 String currentLine = markdownData.get(i);
@@ -44,12 +38,11 @@ public class MCMarkdown {
                     case "ATTRIBUTE":
                         convertedHTML.add(htmlConverter.processLink( currentLine));
                         break;
-//                    case "IGNORED":
-//                        convertedHTML.add(currentLine);
                     case "ORIGINAL":
                         convertedHTML.add(currentLine);
                         break;
                     default:
+                        convertedHTML.add("This string is not supported by markdown");
                 }
             }
 
@@ -71,4 +64,4 @@ public class MCMarkdown {
 // [x] Determine the type of html component / tags
 // [x] Handle Identifying headers
 // [x] Headers, paragraphs ,attribute, Ignored,
-// [] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
+// [x] LINKS CAN BE EMBEDDED IN HEADERS OR PARAGRAPHS
